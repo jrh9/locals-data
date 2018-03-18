@@ -10,4 +10,5 @@
 /home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/controller/Controller.java
 /home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/exception/UnexpectedErrorException.java
 /home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/model/Comment.java
+/home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/repository/UserRepository.java
 /home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/dto/UserParameterBean.java

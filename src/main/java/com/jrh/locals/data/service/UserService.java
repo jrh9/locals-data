@@ -9,13 +9,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import com.jrh.locals.data.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@Component
+@Service
 public class UserService {
 
     private static List<User> users = new ArrayList<>();
     private static List<Post> posts = new ArrayList<>();
+    @Autowired
+    private UserRepository userRepository;
 
 
     static {
@@ -83,8 +89,8 @@ public class UserService {
         return post;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public @ResponseBody Iterable<User> getUsers() {
+        return userRepository.findAll();
     }
 
     private static void initialize() {

@@ -20,11 +20,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class Controller {
 
     @Autowired
-    private UserService service;
+    private UserService userService;
 
     @GetMapping("/users")
-    public List<User> getUsers() {
-        return service.getUsers();
+    public Iterable<User> getUsers() {
+        return userService.getUsers();
     }
 
 
@@ -32,7 +32,7 @@ public class Controller {
     public ResponseEntity<Void> createUser(
             @RequestBody String username) {
 
-        User user = service.addUser(username);
+        User user = userService.addUser(username);
 
         if (user == null)
             return ResponseEntity.noContent().build();
@@ -45,19 +45,19 @@ public class Controller {
 
     @GetMapping("/posts")
     public List<Post> getPosts() {
-        return service.getPosts();
+        return userService.getPosts();
     }
 
     @GetMapping("/users/{username}/posts")
     public List<Post> retrievePostsByUsername(@PathVariable String username) {
-        return service.getPostsByUsername(username);
+        return userService.getPostsByUsername(username);
     }
 
     @PostMapping("/users/{username}/posts")
     public ResponseEntity<Void> registerStudentForPost(
             @PathVariable String username, @RequestBody Post newPost) {
 
-        Post post = service.addPost(username, newPost);
+        Post post = userService.addPost(username, newPost);
 
         if (post == null)
             return ResponseEntity.noContent().build();

@@ -2,6 +2,7 @@ com/jrh/locals/data/dto/UpdateUserBean.class
 com/jrh/locals/data/model/Post.class
 com/jrh/locals/data/dto/UserParameterBean.class
 com/jrh/locals/data/service/PostService.class
+com/jrh/locals/data/repository/UserRepository.class
 com/jrh/locals/data/dto/CreateUserBean.class
 com/jrh/locals/data/model/Comment.class
 com/jrh/locals/data/exception/ResourceNotFoundException.class
