@@ -28,8 +28,8 @@ public class UserService {
     }
 
     public User addUser(String username) {
-        int idToAssign = users.size();
-        User newUser = new User(idToAssign, username, 0, new ArrayList<Post>());
+        int id = users.size();
+        User newUser = new User(id, username, "", 0);
 
         return newUser;
     }
@@ -63,8 +63,7 @@ public class UserService {
         if (user == null) {
             throw new RuntimeException("User not found");
         }
-
-        return user.getPosts();
+        return null;
     }
 
     private SecureRandom random = new SecureRandom();
@@ -80,8 +79,6 @@ public class UserService {
         String randomId = UUID.randomUUID().toString();
         post.setId(randomId);
         */
-
-        user.getPosts().add(post);
 
         return post;
     }
@@ -130,22 +127,21 @@ public class UserService {
         posts.add(post3);
         posts.add(post4);
 
-        User user1 = new User(1, "John Doe", 1,
-                new ArrayList<>(Arrays.asList(post1)));
-
-        User user2 = new User(2, "Jane Doe", 2,
-                new ArrayList<>(Arrays.asList(post2, post3)));
-
-        User user3 = new User(3, "Test Ing",3,
-                new ArrayList<>(Arrays.asList(post4)));
-
-        User user4 = new User(4, "Ran Dom", 4,
-                new ArrayList<>(Arrays.asList()));
-
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
-        users.add(user4);
+//        User user1 = new User("jon", );
+//
+//        User user2 = new User(2, "Jane Doe", 2,
+//                new ArrayList<>(Arrays.asList(post2, post3)));
+//
+//        User user3 = new User(3, "Test Ing",3,
+//                new ArrayList<>(Arrays.asList(post4)));
+//
+//        User user4 = new User(4, "Ran Dom", 4,
+//                new ArrayList<>(Arrays.asList()));
+//
+//        users.add(user1);
+//        users.add(user2);
+//        users.add(user3);
+//        users.add(user4);
 
 
 

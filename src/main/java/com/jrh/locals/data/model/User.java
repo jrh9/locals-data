@@ -1,20 +1,25 @@
 package com.jrh.locals.data.model;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String username;
+    private String email;
     private int karma;
-    private List<Post> posts;
 
-    public User(int id, String name, int karma,
-                   List<Post> posts) {
-        super();
+    public User(int id, String username, String email, int karma) {
         this.id = id;
-        this.username = name;
+        this.username = username;
+        this.email = email;
         this.karma = karma;
-        this.posts = posts;
     }
 
     public int getId() {
@@ -29,7 +34,11 @@ public class User {
         return username;
     }
 
-    public void setUsername(String name) {
+    public String getEmail() {
+        return username;
+    }
+
+    public void setEmail(String name) {
         this.username = name;
     }
 
@@ -41,19 +50,11 @@ public class User {
         this.karma = karma;
     }
 
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
-
 
     @Override
     public String toString() {
         return String.format(
-                "Student [id=%s, username=%s, karma=%s, Posts=%s]", id,
-                username, karma, posts);
+                "Student [id=%s, username=%s, email=%s, karma=%s]", id,
+                username, email, karma);
     }
 }
