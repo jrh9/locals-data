@@ -39,7 +39,7 @@ public class PostService {
     private SecureRandom random = new SecureRandom();
 
     public Post addPost() {
-        return addPost();
+        return new Post();
     }
 
     public Post addPost(String title, String text, int submittedBy) {
