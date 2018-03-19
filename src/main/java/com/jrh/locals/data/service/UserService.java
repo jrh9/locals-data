@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public interface UserService {
 
 
-    public List<User> retrieveAllUsers();
+    public Iterable<User> getUsers();
 
     public User addUser(String username);
 
@@ -27,5 +27,4 @@ public interface UserService {
 
     public User getUserById(int id);
 
-    public Iterable<User> getUsers();
 }
