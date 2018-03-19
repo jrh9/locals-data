@@ -45,23 +45,26 @@ public class Controller {
 
     @GetMapping("/posts")
     public List<Post> getPosts() {
-        return userService.getPosts();
+        return null;
+//        return userService.getPosts();
     }
 
     @GetMapping("/users/{username}/posts")
     public List<Post> retrievePostsByUsername(@PathVariable String username) {
-        return userService.getPostsByUsername(username);
+        return null;
+//        return userService.getPostsByUsername(username);
     }
 
     @PostMapping("/users/{username}/posts")
     public ResponseEntity<Void> registerStudentForPost(
             @PathVariable String username, @RequestBody Post newPost) {
 
-        Post post = userService.addPost(username, newPost);
-
-        if (post == null)
-            return ResponseEntity.noContent().build();
-
+        Post post = null;
+//        Post post = userService.addPost(username, newPost);
+//
+//        if (post == null)
+//            return ResponseEntity.noContent().build();
+//
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
                 "/{id}").buildAndExpand(post.getId()).toUri();
 
