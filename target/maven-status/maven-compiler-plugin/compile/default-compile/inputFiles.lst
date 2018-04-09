@@ -6,6 +6,7 @@
 /home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/dto/CreateUserBean.java
 /home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/exception/ResourceNotFoundException.java
 /home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/service/UserService.java
+/home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/service/impl/UserServiceImpl.java
 /home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/exception/DataFormatException.java
 /home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/controller/Controller.java
 /home/jon/dev/locals-data/src/main/java/com/jrh/locals/data/exception/UnexpectedErrorException.java

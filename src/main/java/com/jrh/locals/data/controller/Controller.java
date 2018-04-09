@@ -3,6 +3,7 @@ package com.jrh.locals.data.controller;
 import java.net.URI;
 import java.util.List;
 
+import com.jrh.locals.data.dao.UserDao;
 import com.jrh.locals.data.model.Post;
 import com.jrh.locals.data.model.User;
 import com.jrh.locals.data.service.UserService;
@@ -27,20 +28,22 @@ public class Controller {
         return userService.getUsers();
     }
 
-
     @PostMapping("/users")
     public ResponseEntity<Void> createUser(
-            @RequestBody String username) {
+            @RequestBody String userJson) {
+        try {
+            User user = userService.addUser(userJson);
 
-        User user = userService.addUser(username);
+            if (user == null)
+                return ResponseEntity.noContent().build();
 
-        if (user == null)
-            return ResponseEntity.noContent().build();
+            URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
+                    "/{id}").buildAndExpand(user.getId()).toUri();
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
-                "/{id}").buildAndExpand(user.getId()).toUri();
-
-        return ResponseEntity.created(location).build();
+            return ResponseEntity.created(location).build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @GetMapping("/posts")

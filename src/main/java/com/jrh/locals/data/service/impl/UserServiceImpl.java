@@ -1,11 +1,13 @@
 package com.jrh.locals.data.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jrh.locals.data.dao.UserDao;
 import com.jrh.locals.data.model.Post;
 import com.jrh.locals.data.model.User;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import com.jrh.locals.data.repository.UserRepository;
 import com.jrh.locals.data.service.UserService;
@@ -16,16 +18,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Service
 public class UserServiceImpl implements UserService {
     private static List<User> users = new ArrayList<>();
-    private static List<Post> posts = new ArrayList<>();
 
     @Autowired
     private UserRepository userRepository;
 
-    public User addUser(String username) {
-        int id = users.size();
-        User newUser = new User(id, username, "", 0);
+    public User addUser(String userJson) throws Exception {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            User newUser = mapper.readValue(userJson, User.class);
+            userRepository.save(newUser);
 
-        return newUser;
+            return newUser;
+
+        } catch (IOException e) {
+            throw new Exception("Error occurred when creating new user", e);
+        }
     }
 
     public User getUserByName(String username) {

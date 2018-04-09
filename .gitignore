@@ -4,8 +4,6 @@
 .classpath
 .project
 .settings/
-target
-target/**
-/target/**
+target/
 
 locals-data.iml
